@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Installing helm chart | Sukeesh</title>
+<meta name="keywords" content="">
+<meta name="description" content="$ helm init
+$ helm create test-sukeesh
+This will create all the files necessary, We are only interested in Chart.yaml, values.yaml files.
+$ helm lint this would lint all the files
+Once you are done with all the changes, then go back to the root dir and do helm install
+$ cd ..
+$ helm install test-sukeesh-0.1.0.tgz
+But, when you try above command, you might see some error related to invalid permissions.">
+<meta name="author" content="Sukeesh">
+<link rel="canonical" href="http://localhost:1313/archetypes/helm/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/archetypes/helm/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Sukeesh (Alt + H)">Sukeesh</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Installing helm chart
+    </h1>
+    <div class="post-meta"><span title='2019-07-02 00:00:00 +0000 UTC'>July 2, 2019</span>&nbsp;·&nbsp;Sukeesh
+
+</div>
+  </header> 
+  <div class="post-content"><p><code>$ helm init</code></p>
+<p><code>$ helm create test-sukeesh</code></p>
+<p>This will create all the files necessary, We are only interested in <code>Chart.yaml</code>, <code>values.yaml</code> files.</p>
+<p><code>$ helm lint</code> this would lint all the files</p>
+<p>Once you are done with all the changes, then go back to the root dir and do <code>helm install</code></p>
+<p><code>$ cd ..</code>
+<code>$ helm install test-sukeesh-0.1.0.tgz</code></p>
+<p>But, when you try above command, you might see some error related to invalid permissions.</p>
+<p>So, when you try to tail the logs of tiller pod in <code>kube-system</code> namespace which is installed when we did <code>helm init</code>
+We see these errors like these</p>
+<pre tabindex="0"><code>tiller-deploy-c78f4c8d9-2q4jz tiller [tiller] 2019/07/02 07:56:00 preparing install for
+tiller-deploy-c78f4c8d9-2q4jz tiller [storage] 2019/07/02 07:56:00 getting release &#34;orbiting-hog.v1&#34;
+tiller-deploy-c78f4c8d9-2q4jz tiller [storage/driver] 2019/07/02 07:56:00 get: failed to get &#34;orbiting-hog.v1&#34;: configmaps &#34;orbiting-hog.v1&#34; is forbidden: User &#34;system:serviceaccount:kube-system:default&#34; cannot get resource &#34;configmaps&#34; in API group &#34;&#34; in the namespace &#34;kube-system&#34;
+</code></pre><p>So, by default when we don&rsquo;t specify a service account in the service, this uses <code>&quot;system:serviceaccount:kube-system:default&quot;</code> service account but then this has no permissions.
+So, create a Role-based access control file
+<code>rbac-config.yaml</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ServiceAccount</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">tiller</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">kube-system</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterRoleBinding</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">tiller</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">roleRef</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">apiGroup</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterRole</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cluster-admin</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">subjects</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ServiceAccount</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">tiller</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">kube-system</span>
+</span></span></code></pre></div><p>Apply this <code>rbac-config.yaml</code> file</p>
+<pre tabindex="0"><code>$ kubectl create -f rbac-config.yaml
+serviceaccount &#34;tiller&#34; created
+clusterrolebinding &#34;tiller&#34; created
+</code></pre><p>You can see serviceaccount and clusterrolebinding &ldquo;tiller&rdquo; has been created successfully.
+Verify with the following</p>
+<pre tabindex="0"><code>$ kubectl get serviceaccounts | grep tiller
+tiller                               1         30s
+</code></pre><p>But, when you try installing the helm, you might again get the same error because we created a service account but did not associate it with our tiller deployment.</p>
+<pre tabindex="0"><code>$ kubectl get deploy | grep tiller
+tiller-deploy            1         1         1            1           91m
+</code></pre><pre tabindex="0"><code>$ kubectl edit deploy tiller-deploy
+deployment.extensions/tiller-deploy edited
+</code></pre><p>Edit the <code>tiller-deploy</code> deployment and add serviceAccountName to spec.template.spec as below</p>
+<pre tabindex="0"><code>...
+serviceAccountName: tiller
+...
+</code></pre><p>Now, helm is able to install with no error</p>
+<pre tabindex="0"><code>$ helm install test-sukeesh-0.1.0.tgz --debug
+
+[debug] Created tunnel using local port: &#39;52030&#39;
+
+[debug] SERVER: &#34;127.0.0.1:52030&#34;
+
+[debug] Original chart version: &#34;&#34;
+[debug] CHART PATH: /Users/sukeesh/Documents/helm/test-sukeesh-0.1.0.tgz
+
+NAME:   alliterating-wildebeest
+REVISION: 1
+RELEASED: Tue Jul  2 21:27:15 2019
+CHART: test-sukeesh-0.1.0
+USER-SUPPLIED VALUES:
+{}
+
+COMPUTED VALUES:
+affinity: {}
+image:
+  pullPolicy: IfNotPresent
+  repository: daemonza/testapi
+  tag: latest
+ingress:
+  annotations: {}
+  enabled: false
+  hosts:
+  - chart-example.local
+  path: /
+  tls: []
+nodeSelector: {}
+replicaCount: 2
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+service:
+  externalPort: 80
+  internalPort: 80
+  name: test-sukeesh
+  port: 9000
+  type: ClusterIP
+tolerations: []
+
+HOOKS:
+MANIFEST:
+
+---
+# Source: test-sukeesh/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: alliterating-wildebeest-test-sukeesh
+  labels:
+    app: test-sukeesh
+    chart: test-sukeesh-0.1.0
+    release: alliterating-wildebeest
+    heritage: Tiller
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: test-sukeesh
+    release: alliterating-wildebeest
+---
+# Source: test-sukeesh/templates/deployment.yaml
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: alliterating-wildebeest-test-sukeesh
+  labels:
+    app: test-sukeesh
+    chart: test-sukeesh-0.1.0
+    release: alliterating-wildebeest
+    heritage: Tiller
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: test-sukeesh
+      release: alliterating-wildebeest
+  template:
+    metadata:
+      labels:
+        app: test-sukeesh
+        release: alliterating-wildebeest
+    spec:
+      containers:
+        - name: test-sukeesh
+          image: &#34;daemonza/testapi:latest&#34;
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+LAST DEPLOYED: Tue Jul  2 21:27:15 2019
+NAMESPACE: kube-system
+STATUS: DEPLOYED
+
+RESOURCES:
+==&gt; v1/Service
+NAME                                  TYPE       CLUSTER-IP     EXTERNAL-IP  PORT(S)   AGE
+alliterating-wildebeest-test-sukeesh  ClusterIP  10.59.245.130  &lt;none&gt;       9000/TCP  1s
+
+==&gt; v1beta2/Deployment
+NAME                                  DESIRED  CURRENT  UP-TO-DATE  AVAILABLE  AGE
+alliterating-wildebeest-test-sukeesh  2        2        2           0          0s
+
+==&gt; v1/Pod(related)
+NAME                                                   READY  STATUS             RESTARTS  AGE
+alliterating-wildebeest-test-sukeesh-6d577d4888-bftnq  0/1    ContainerCreating  0         0s
+alliterating-wildebeest-test-sukeesh-6d577d4888-ntmzz  0/1    ContainerCreating  0         0s
+
+
+NOTES:
+1. Get the application URL by running these commands:
+  export POD_NAME=$(kubectl get pods --namespace kube-system -l &#34;app=test-sukeesh,release=alliterating-wildebeest&#34; -o jsonpath=&#34;{.items[0].metadata.name}&#34;)
+  echo &#34;Visit http://127.0.0.1:8080 to use your application&#34;
+  kubectl port-forward $POD_NAME 8080:80
+</code></pre>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">Sukeesh</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

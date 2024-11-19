@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Sukeesh</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Sukeesh</description>
+    <generator>Hugo -- 0.138.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Looking Back: Two Years After Graduation</title>
+      <link>http://localhost:1313/archetypes/looking-back/</link>
+      <pubDate>Fri, 14 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/archetypes/looking-back/</guid>
+      <description>A retrospective on my journey as a Software Engineer at Mercari, the challenges faced, and the projects completed over the past two years in Tokyo, Japan.</description>
+    </item>
+    <item>
+      <title>Go vs C&#43;&#43; | Which is Faster? | Sieve of Eratosthenes</title>
+      <link>http://localhost:1313/archetypes/cpp-go/</link>
+      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/archetypes/cpp-go/</guid>
+      <description>A comparison of the Sieve of Eratosthenes implementation in Golang and C&#43;&#43; to see which is faster.</description>
+    </item>
+    <item>
+      <title>What Would Have Happened If You Bought These Stocks Daily?</title>
+      <link>http://localhost:1313/archetypes/sip/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/archetypes/sip/</guid>
+      <description>Analyzing daily investments in select NIFTY50 stocks to determine potential profit or loss.</description>
+    </item>
+    <item>
+      <title>Setting up and Troubleshooting Prometheus in Kubernetes</title>
+      <link>http://localhost:1313/archetypes/prometheus/</link>
+      <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/archetypes/prometheus/</guid>
+      <description>&lt;hr&gt;
+&lt;h3 id=&#34;prometheus&#34;&gt;Prometheus&lt;/h3&gt;
+&lt;p&gt;Prometheus is an open-source systems monitoring and alerting toolkit. It scrapes metrics from instrumented jobs, either directly or via an intermediary push gateway for short-lived jobs. It stores all scraped samples locally and runs rules over this data to either aggregate and record new time series from existing data or generate alerts. &lt;a href=&#34;https://prometheus.io/docs/introduction/overview/&#34;&gt;link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I tried to make this blog post as simple as possible and it has all the basic components required to setup Prometheus successfully in your microservice.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Started Contributing to Kubernetes</title>
+      <link>http://localhost:1313/archetypes/started-k8s/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/archetypes/started-k8s/</guid>
+      <description>&lt;p&gt;So, finally started &lt;a href=&#34;https://github.com/kubernetes/kubernetes/pulls/sukeesh&#34;&gt;contributing to the Kubernetes source code on github&lt;/a&gt;. At first, I was really worried after looking at the source code as It was too huge. But finally, I made up my mind to start with &lt;a href=&#34;https://github.com/kubernetes/kubernetes/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22&#34;&gt;good first issues&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Most of the good first issues were to cleanup the source code, add docs in the code kind of stuff and seemed really easy to me. So, came up with this PR &lt;a href=&#34;https://github.com/kubernetes/kubernetes/pull/79367&#34;&gt;#79367&lt;/a&gt; to start off. The code review flow was really good (even though took a bit time) and this PR was finally merged by the bot. :wink:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Installing helm chart</title>
+      <link>http://localhost:1313/archetypes/helm/</link>
+      <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/archetypes/helm/</guid>
+      <description>&lt;p&gt;&lt;code&gt;$ helm init&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ helm create test-sukeesh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This will create all the files necessary, We are only interested in &lt;code&gt;Chart.yaml&lt;/code&gt;, &lt;code&gt;values.yaml&lt;/code&gt; files.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ helm lint&lt;/code&gt; this would lint all the files&lt;/p&gt;
+&lt;p&gt;Once you are done with all the changes, then go back to the root dir and do &lt;code&gt;helm install&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ cd ..&lt;/code&gt;
+&lt;code&gt;$ helm install test-sukeesh-0.1.0.tgz&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;But, when you try above command, you might see some error related to invalid permissions.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Dropbox Deduplication test</title>
+      <link>http://localhost:1313/archetypes/dropbox/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/archetypes/dropbox/</guid>
+      <description>&lt;p&gt;It works by breaking files into blocks. Each of these blocks is hashed. Only blocks that are not yet known are uploaded to the server when syncing.&lt;/p&gt;
+&lt;p&gt;Check : &lt;a href=&#34;https://blogs.dropbox.com/dropbox/2011/07/changes-to-our-policies/&#34;&gt;Dropbox blog&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;test&#34;&gt;Test&lt;/h3&gt;
+&lt;p&gt;I used this &lt;a href=&#34;https://www.youtube.com/watch?v=FBCmIFCpJBU&#34;&gt;video&lt;/a&gt; for testing which is &lt;code&gt;21.8 MB&lt;/code&gt; in size.
+The freshly downloaded file took 27 seconds ( approx ) to sync. Then, I renamed the file. This duplicate file took 4 seconds( approx )!&lt;/p&gt;
+&lt;h3 id=&#34;video&#34;&gt;Video&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=dDvfkiUxS-A&#34;&gt;&lt;img alt=&#34;some random&#34; loading=&#34;lazy&#34; src=&#34;https://img.youtube.com/vi/dDvfkiUxS-A/0.jpg&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lowest Common Ancestor | Binary Lifting</title>
+      <link>http://localhost:1313/archetypes/lca-binary-lifting/</link>
+      <pubDate>Mon, 22 Aug 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/archetypes/lca-binary-lifting/</guid>
+      <description>&lt;p&gt;&lt;!-- raw HTML omitted --&gt;What is LCA?&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;In graph theory and computer science, the lowest common ancestor (LCA) of two nodes v and w in a tree or directed acyclic graph (DAG) T is the lowest (i.e. deepest) node that has both v and w as descendants, where we define each node to be a descendant of itself (so if v has a direct connection from w, w is the lowest common ancestor).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sparse tables</title>
+      <link>http://localhost:1313/archetypes/sparse/</link>
+      <pubDate>Thu, 14 Jan 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/archetypes/sparse/</guid>
+      <description>&lt;p&gt;What are sparse tables?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Data structure that allows range queries&lt;/li&gt;
+&lt;li&gt;Can answer most queries in O(log N)&lt;/li&gt;
+&lt;li&gt;But can answer Range Minimum Queries in O(1)
+&lt;ul&gt;
+&lt;li&gt;An idempotent operation can be repeated an arbitrary number of times and the result will be the same as if it had been    done only once. In arithmetic, adding zero to a number is idempotent.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;It can be only used on immutable arrays. If you need any change, whole DS needs to be changed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Intuition&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Simple script to hack during contests</title>
+      <link>http://localhost:1313/archetypes/cf-hack/</link>
+      <pubDate>Fri, 18 Dec 2015 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/archetypes/cf-hack/</guid>
+      <description>&lt;p&gt;This is a simple shell script to hack during codeforces/topcoder rounds. &lt;code&gt;your_code.cpp&lt;/code&gt; should be your code, &lt;code&gt;victim_code.cpp&lt;/code&gt; should be victim&amp;rsquo;s code. Write test case generator in &lt;code&gt;test.py&lt;/code&gt; and run this bash file by &lt;code&gt;bash hack.sh&lt;/code&gt;. This script keeps on iterating until it finds a test case where your_code.cpp and victim_code.cpp gives a different output. Once it finds a hack test case, this stops iterating. Now, you can copy the test case and hack.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Save a file in vim without root permission</title>
+      <link>http://localhost:1313/archetypes/save-file-no-root/</link>
+      <pubDate>Thu, 10 Dec 2015 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/archetypes/save-file-no-root/</guid>
+      <description>&lt;p&gt;This happens lot of times. You open Vim to edit a system file, do some changes, and &lt;code&gt;:wq&lt;/code&gt;.
+We won&amp;rsquo;t be able to save a file due to permission issues.&lt;/p&gt;
+&lt;p&gt;To save a file, simply type the following command.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;:w !sudo tee %&lt;/code&gt; and enter the password as prompted. Voila.&lt;/p&gt;
+&lt;h2 id=&#34;add-this-to-your-vimrc-file&#34;&gt;Add this to your ~/.vimrc file&lt;/h2&gt;
+&lt;p&gt;Edit &lt;code&gt;~/.vimrc&lt;/code&gt; and append the following code:
+&lt;code&gt;command W :execute &#39;:silent w !sudo tee % &amp;gt; /dev/null&#39; | :edit!&lt;/code&gt;
+Save and close the file. Now, try to edit a privileged file. Now, write a privileged file with custom command &lt;code&gt;:W&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>First Post</title>
+      <link>http://localhost:1313/archetypes/first/</link>
+      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/archetypes/first/</guid>
+      <description>&lt;p&gt;Hey there! This is my first post!&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
